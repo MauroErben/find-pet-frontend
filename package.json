@@ -8,8 +8,15 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@chakra-ui/react": "^2.2.3",
+    "@emotion/react": "^11.9.3",
+    "@emotion/styled": "^11.9.3",
+    "axios": "^0.27.2",
+    "formik": "^2.2.9",
+    "framer-motion": "^6.4.3",
     "react": "^18.0.0",
-    "react-dom": "^18.0.0"
+    "react-dom": "^18.0.0",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@types/react": "^18.0.0",
@@ -27,6 +34,10 @@
   },
   "eslintConfig": {
     "parser": "babel-eslint",
-    "extends": ["standard", "standard-jsx", "standard-react"]
+    "extends": [
+      "standard",
+      "standard-jsx",
+      "standard-react"
+    ]
   }
 }
