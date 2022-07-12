@@ -1,0 +1,148 @@
+import React from 'react'
+import {
+    Stack,
+    VStack,
+    Heading,
+    Text,
+    Image,
+    InputGroup,
+    Input,
+    Textarea,
+    Select,
+    Button,
+    FormControl,
+    InputLeftElement,
+    FormErrorMessage
+} from '@chakra-ui/react'
+import { MdTitle, MdImage } from 'react-icons/md'
+import { BsFillTelephoneFill } from 'react-icons/bs'
+import { useFormik } from 'formik'
+import { postScheme } from './PostScheme'
+
+export default function PostForm() {
+
+    const formik = useFormik({
+        enableReinitialize: true,
+        initialValues: {
+            title: '',
+            description: '',
+            location: '',
+            image: '',
+            phone: '',
+        },
+        validationSchema: postScheme,
+        onSubmit: (values, { setSubmitting, resetForm }) => {
+            setTimeout(() => {
+                alert(JSON.stringify(values))
+                setSubmitting(false)
+                resetForm()
+            }, 400);
+        }
+    })
+
+    return (
+        <Stack
+            spacing={4}
+            padding={[4, 4, 6, 8]}
+        >
+            {/* HEADER */}
+            <VStack
+                spacing={2}
+                justifyContent='center'
+                alignItems='center'
+            >
+                <Heading size={['md', 'md', 'lg', 'xl']} as='h3'>Crear publicación</Heading>
+                <Text textAlign='center'>Creá una publicación y aumentá las probabilidades de encontrar a tu mascota.</Text>
+                <Image boxSize='120px' src='/images/huella.png' />
+            </VStack>
+
+            {/* BODY */}
+            <VStack
+                spacing={4}
+            >
+                <FormControl isInvalid={formik.touched.title && formik.errors.title}>
+                    <InputGroup>
+                        <InputLeftElement
+                            children={<MdTitle size={18} color='gray' />}
+                        />
+                        <Input
+                            type='text'
+                            placeholder='Ingresá un titulo'
+                            name='title'
+                            value={formik.values.title}
+                            onChange={formik.handleChange}
+                            onBlur={formik.handleBlur}
+                        />
+                    </InputGroup>
+                    <FormErrorMessage>{formik.errors.title}</FormErrorMessage>
+                </FormControl>
+
+                <FormControl isInvalid={formik.touched.description && formik.errors.description}>
+                    <Textarea
+                        placeholder='Descripción'
+                        name='description'
+                        value={formik.values.description}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                    />
+                    <FormErrorMessage>{formik.errors.description}</FormErrorMessage>
+                </FormControl>
+
+                <FormControl isInvalid={formik.touched.location && formik.errors.location}>
+                    <Select
+                        placeholder='Departamento'
+                        name='location'
+                        value={formik.values.location}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                    >
+                        <option>Luján de cuyo</option>
+                    </Select>
+                    <FormErrorMessage>{formik.errors.location}</FormErrorMessage>
+                </FormControl>
+
+                <FormControl isInvalid={formik.touched.image && formik.errors.image}>
+                    <InputGroup>
+                        <InputLeftElement
+                            children={<MdImage size={18} color='gray' />}
+                        />
+                        <Input
+                            type='file'
+                            name='image'
+                            value={formik.values.image}
+                            onChange={formik.handleChange}
+                            onBlur={formik.handleBlur}
+                        />
+                    </InputGroup>
+                    <FormErrorMessage>{formik.errors.image}</FormErrorMessage>
+                </FormControl>
+
+                <FormControl isInvalid={formik.touched.phone && formik.errors.phone}>
+                    <InputGroup>
+                        <InputLeftElement
+                            children={<BsFillTelephoneFill size={18} color='gray' />}
+                        />
+                        <Input
+                            type='tel'
+                            placeholder='Número de contacto'
+                            name='phone'
+                            value={formik.values.phone}
+                            onChange={formik.handleChange}
+                            onBlur={formik.handleBlur}
+                        />
+                    </InputGroup>
+                    <FormErrorMessage>{formik.errors.phone}</FormErrorMessage>
+                </FormControl>
+
+                <Button
+                    size='lg'
+                    colorScheme='green'
+                    disabled={formik.isSubmitting}
+                    onClick={formik.handleSubmit}
+                >
+                    Publicar
+                </Button>
+            </VStack>
+        </Stack >
+    )
+}
