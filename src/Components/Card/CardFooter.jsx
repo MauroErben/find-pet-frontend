@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { HStack, Button, IconButton } from '@chakra-ui/react'
-import { MdOutlineShare } from 'react-icons/md'
+import ShareMenu from '../ShareMenu'
 import { IoMdHeartEmpty, IoMdHeart } from 'react-icons/io'
 
-export default function CardFooter() {
+export default function CardFooter({ itemToShare }) {
 
     const [like, setLike] = useState(false)
 
@@ -30,11 +30,7 @@ export default function CardFooter() {
                             : <IoMdHeartEmpty size={28} color='gray' />
                     }
                 />
-
-                <IconButton
-                    variant='link'
-                    icon={<MdOutlineShare size={28} color='gray' />}
-                />
+                <ShareMenu item={itemToShare}/>
             </HStack>
         </HStack>
     )

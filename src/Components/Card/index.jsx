@@ -23,7 +23,7 @@ export default function Card({ postList }) {
                             location={item.postLocation}
                         />
                         <Divider />
-                        <CardFooter />
+                        <CardFooter itemToShare={item}/>
                     </VStack>
                 ))}
             </SimpleGrid>
