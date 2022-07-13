@@ -16,6 +16,7 @@ import {
     InputLeftAddon,
     FormHelperText
 } from '@chakra-ui/react'
+import FormHeader from '../FormHeader'
 import { MdTitle, MdImage } from 'react-icons/md'
 import { BsFillTelephoneFill } from 'react-icons/bs'
 import { useFormik } from 'formik'
@@ -48,16 +49,11 @@ export default function PostForm() {
             padding={[4, 4, 6, 8]}
         >
             {/* HEADER */}
-            <VStack
-                spacing={2}
-                justifyContent='center'
-                alignItems='center'
-            >
-                <Heading size={['md', 'md', 'lg', 'xl']} as='h3'>Crear publicación</Heading>
-                <Text textAlign='center'>Creá una publicación y aumentá las probabilidades de encontrar a tu mascota.</Text>
-                <Image boxSize='120px' src='/images/huella.png' />
-            </VStack>
-
+            <FormHeader
+                title='Crear publicación'
+                subtitle='Creá una publicación y aumentá las probabilidades de encontrar a tu mascota.'
+            />
+            
             {/* BODY */}
             <VStack
                 spacing={4}
