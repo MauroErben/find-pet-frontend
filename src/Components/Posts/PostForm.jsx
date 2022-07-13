@@ -12,7 +12,9 @@ import {
     Button,
     FormControl,
     InputLeftElement,
-    FormErrorMessage
+    FormErrorMessage,
+    InputLeftAddon,
+    FormHelperText
 } from '@chakra-ui/react'
 import { MdTitle, MdImage } from 'react-icons/md'
 import { BsFillTelephoneFill } from 'react-icons/bs'
@@ -108,9 +110,13 @@ export default function PostForm() {
                         />
                         <Input
                             type='file'
+                            accept='.png,.jpg,.jpeg'
                             name='image'
-                            value={formik.values.image}
-                            onChange={formik.handleChange}
+                            onChange={(e) => {
+                                const files = e.target.files
+                                const myFiles = Array.from(files)
+                                formik.setFieldValue('image', myFiles[0])
+                            }}
                             onBlur={formik.handleBlur}
                         />
                     </InputGroup>
@@ -119,8 +125,8 @@ export default function PostForm() {
 
                 <FormControl isInvalid={formik.touched.phone && formik.errors.phone}>
                     <InputGroup>
-                        <InputLeftElement
-                            children={<BsFillTelephoneFill size={18} color='gray' />}
+                        <InputLeftAddon
+                            children='+54'
                         />
                         <Input
                             type='tel'
@@ -131,6 +137,7 @@ export default function PostForm() {
                             onBlur={formik.handleBlur}
                         />
                     </InputGroup>
+                    <FormHelperText>Ingresá un numero sin el código de área</FormHelperText>
                     <FormErrorMessage>{formik.errors.phone}</FormErrorMessage>
                 </FormControl>
 
