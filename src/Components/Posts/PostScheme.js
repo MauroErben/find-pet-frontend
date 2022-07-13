@@ -1,7 +1,7 @@
 import * as Yup from 'yup'
 
 const SUPPORTED_FORMATS = ['image/jpg', 'image/jpeg', 'image/png']
-const IMAGE_MAX_SIZE = 5000000 // 5MB
+const IMAGE_MAX_SIZE = 15000000 // 15MB
 const PHONE_REG_EXP = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/
 
 export const postScheme = Yup.object().shape({
@@ -10,7 +10,7 @@ export const postScheme = Yup.object().shape({
     location: Yup.string().required('Campo obligatorio'),
     image: Yup.mixed()
         .required('Imagen requerida')
-        .test("FILE_SIZE", "La imagen debe ser menor a 5mb.",
+        .test("FILE_SIZE", "La imagen debe ser menor a 15mb.",
             value => !value || (value && value.size <= IMAGE_MAX_SIZE))
         .test("FILE_FORMAT", "La imagen debe tener formato .jpg, .jpeg o .png",
             value => !value || (value && SUPPORTED_FORMATS.includes(value.type))),

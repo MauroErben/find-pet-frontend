@@ -1,7 +1,7 @@
 import * as Yup from 'yup'
 
 const SUPPORTED_FORMATS = ['image/jpg', 'image/jpeg', 'image/png']
-const IMAGE_MAX_SIZE = 5000000 // 5MB
+const IMAGE_MAX_SIZE = 15000000 // 15MB
 
 export const AuthSchema = Yup.object().shape({
     name: Yup.string().required('Campo obligatorio'),
@@ -11,7 +11,7 @@ export const AuthSchema = Yup.object().shape({
         .required('Campo obligatorio'),
 
     profilePicture: Yup.mixed()
-        .test("FILE_SIZE", "La imagen debe ser menor a 5mb.",
+        .test("FILE_SIZE", "La imagen debe ser menor a 15mb.",
             value => !value || (value && value.size <= IMAGE_MAX_SIZE))
         .test("FILE_FORMAT", "La imagen debe tener formato .jpg, .jpeg o .png",
             value => !value || (value && SUPPORTED_FORMATS.includes(value.type))),
