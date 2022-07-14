@@ -1,6 +1,8 @@
 import React from 'react'
 import { VStack, HStack, Heading, Text } from '@chakra-ui/react'
 import { MdLocationPin, MdAccessTime } from 'react-icons/md'
+import moment from 'moment/dist/moment'
+import 'moment/dist/locale/es'
 
 export default function CardBody({ title, desc, location, time }) {
     return (
@@ -21,7 +23,9 @@ export default function CardBody({ title, desc, location, time }) {
                 spacing={1}
             >
                 <MdAccessTime color='gray' size={22} />
-                <Text>{time}</Text>
+                <Text>
+                    {moment(time).locale('es').fromNow()}
+                </Text>
             </HStack>
         </VStack>
     )
