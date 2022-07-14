@@ -3,7 +3,7 @@ import * as Yup from 'yup'
 const SUPPORTED_FORMATS = ['image/jpg', 'image/jpeg', 'image/png']
 const IMAGE_MAX_SIZE = 15000000 // 15MB
 
-export const AuthSchema = Yup.object().shape({
+export const RegisterSchema = Yup.object().shape({
     name: Yup.string().required('Campo obligatorio'),
 
     email: Yup.string()

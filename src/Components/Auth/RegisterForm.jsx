@@ -2,7 +2,7 @@ import React from 'react'
 import { Stack, VStack, FormControl, Input, Button, FormErrorMessage, Text, Link } from '@chakra-ui/react'
 import FormHeader from '../FormHeader'
 import { useFormik } from 'formik'
-import { AuthSchema } from './AuthScheme'
+import { RegisterSchema } from './Schemas/RegisterSchema'
 import { Link as RouterLink } from 'react-router-dom'
 
 export default function RegisterForm() {
@@ -16,7 +16,7 @@ export default function RegisterForm() {
             password: '',
             repeatPassword: ''
         },
-        validationSchema: AuthSchema,
+        validationSchema: RegisterSchema,
         onSubmit: (values, { setSubmitting, resetForm }) => {
             setTimeout(() => {
                 alert(JSON.stringify(values))
@@ -34,7 +34,7 @@ export default function RegisterForm() {
             {/* HEADER */}
             <FormHeader
                 title='Crear cuenta'
-                subtitle='Creá una cuenta y administrá todas tus publicaciónes.'
+                subtitle='Creá una cuenta para poder administrar y crear publicaciónes.'
             />
             {/* BODY */}
             <VStack
@@ -114,7 +114,7 @@ export default function RegisterForm() {
                     <Link
                         as={RouterLink}
                         ms={1}
-                        to='/'
+                        to='/login'
                     >
                         <Button colorScheme='blue' variant='link'>Iniciar sesión</Button>
                     </Link>
