@@ -133,7 +133,7 @@ export default function PostForm() {
                             onBlur={formik.handleBlur}
                         />
                     </InputGroup>
-                    <FormHelperText>Ingresá un numero sin el código de área</FormHelperText>
+                    <FormHelperText>Ingresá un numero sin el código de área ej: 261XXXXXXX</FormHelperText>
                     <FormErrorMessage>{formik.errors.phone}</FormErrorMessage>
                 </FormControl>
 
