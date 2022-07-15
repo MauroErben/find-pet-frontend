@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react'
 
-export default function usePost() {
+export default function usePost(url) {
     const [result, setResult] = useState({
         data: [{}],
         isLoaded: false
     })
 
     useEffect(() => {
-        fetch('http://localhost:3001/posts')
+        fetch(url)
             .then(res => res.json())
             .then(data => setResult({data, isLoaded: true}))
     }, [])
