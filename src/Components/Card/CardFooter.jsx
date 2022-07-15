@@ -74,6 +74,7 @@ export default function CardFooter({ post }) {
                             <TwitterShareButton
                                 url={`http://localhost:3000/${post?.id}`}
                                 title={post?.postTitle}
+                                hashtags={['AnimalesMendoza', 'AnimalesPerdidos', 'BusquedaDeAnimales', 'Mendoza']}
                             >
                                 <TwitterIcon round size={48} />
                             </TwitterShareButton>
