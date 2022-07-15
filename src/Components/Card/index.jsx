@@ -13,6 +13,7 @@ export default function CardPost({ postList }) {
                         alignItems='flex-start'
                         borderWidth='1px'
                         shadow='md'
+                        padding={4}
                         key={item.id}
                     >
                         <CardHeader image={item.postImage} />
@@ -23,7 +24,7 @@ export default function CardPost({ postList }) {
                             location={item.postLocation}
                         />
                         <Divider />
-                        <CardFooter />
+                        <CardFooter post={item}/>
                     </VStack>
                 ))}
             </SimpleGrid>

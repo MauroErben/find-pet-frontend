@@ -22,14 +22,15 @@ import {
     TwitterIcon
 } from 'react-share'
 
-export default function CardFooter() {
+export default function CardFooter({ post }) {
     const { isOpen, onOpen, onClose } = useDisclosure()
+    const { id, postTitle } = post
+
     return (
         <>
             <HStack
                 w='full'
                 justifyContent='space-between'
-                p={4}
             >
                 <Button
                     variant='link'
@@ -57,15 +58,25 @@ export default function CardFooter() {
                             justifyContent='center'
                             alignItems='center'
                         >
-                            <FacebookShareButton>
+                            <FacebookShareButton
+                                url={`http://localhost:3000/${id}`}
+                                quote={postTitle}
+                                hashtag='#AnimalesMendoza'
+                            >
                                 <FacebookIcon round size={48} />
                             </FacebookShareButton>
 
-                            <WhatsappShareButton>
+                            <WhatsappShareButton
+                                url={`http://localhost:3000/${id}`}
+                                title={postTitle}
+                            >
                                 <WhatsappIcon round size={48} />
                             </WhatsappShareButton>
 
-                            <TwitterShareButton>
+                            <TwitterShareButton
+                                url={`http://localhost:3000/${id}`}
+                                title={postTitle}
+                            >
                                 <TwitterIcon round size={48} />
                             </TwitterShareButton>
                         </HStack>

@@ -9,9 +9,9 @@ export default function CardBody({ title, desc, location, time }) {
         <VStack
             spacing={2}
             alignItems='flex-start'
-            padding={4}
+            fontSize='sm'
         >
-            <Heading fontSize={['large', 'large', 'large', 'x-large']}>{title}</Heading>
+            <Heading fontSize='lg'>{title}</Heading>
             <Text noOfLines={3}>{desc}</Text>
             <HStack
                 spacing={1}
