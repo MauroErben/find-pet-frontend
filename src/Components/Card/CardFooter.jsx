@@ -24,8 +24,6 @@ import {
 
 export default function CardFooter({ post }) {
     const { isOpen, onOpen, onClose } = useDisclosure()
-    const { id, postTitle } = post
-
     return (
         <>
             <HStack
@@ -59,23 +57,23 @@ export default function CardFooter({ post }) {
                             alignItems='center'
                         >
                             <FacebookShareButton
-                                url={`http://localhost:3000/${id}`}
-                                quote={postTitle}
+                                url={`http://localhost:3000/${post?.id}`}
+                                quote={post?.postTitle}
                                 hashtag='#AnimalesMendoza'
                             >
                                 <FacebookIcon round size={48} />
                             </FacebookShareButton>
 
                             <WhatsappShareButton
-                                url={`http://localhost:3000/${id}`}
-                                title={postTitle}
+                                url={`http://localhost:3000/${post?.id}`}
+                                title={post?.postTitle}
                             >
                                 <WhatsappIcon round size={48} />
                             </WhatsappShareButton>
 
                             <TwitterShareButton
-                                url={`http://localhost:3000/${id}`}
-                                title={postTitle}
+                                url={`http://localhost:3000/${post?.id}`}
+                                title={post?.postTitle}
                             >
                                 <TwitterIcon round size={48} />
                             </TwitterShareButton>
