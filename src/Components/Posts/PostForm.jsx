@@ -18,7 +18,6 @@ import {
 } from '@chakra-ui/react'
 import FormHeader from '../FormHeader'
 import { MdTitle, MdImage } from 'react-icons/md'
-import { BsFillTelephoneFill } from 'react-icons/bs'
 import { useFormik } from 'formik'
 import { postScheme } from './PostScheme'
 
@@ -72,6 +71,7 @@ export default function PostForm() {
                             onBlur={formik.handleBlur}
                         />
                     </InputGroup>
+                    <FormHelperText>El titulo debe ser corto ej: Encontre/Busco a Firulais</FormHelperText>
                     <FormErrorMessage>{formik.errors.title}</FormErrorMessage>
                 </FormControl>
 
