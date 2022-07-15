@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 
 export default function usePost() {
     const [result, setResult] = useState({
-        data: [],
+        data: [{}],
         isLoaded: false
     })
 
