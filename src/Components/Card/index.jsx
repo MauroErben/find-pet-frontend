@@ -5,33 +5,34 @@ import CardBody from './CardBody'
 import CardFooter from './CardFooter'
 import CardSkeleton from '../Skeleton'
 
-export default function CardPost({ postList }) {
-    if (postList.length > 0) {
+export default function CardPost({ postData, loading }) {
+    if (postData.length > 0) {
         return (
             <SimpleGrid p={[4, 4, 6, 8]} columns={{ sm: 1, md: 2, lg: 3 }} spacing={14}>
-                {postList.map(item => (
+                {postData.map(item => (
                     <VStack
-                        alignItems='flex-start'
+                        justifyContent='center'
+                        alignItems='center'
                         borderWidth='1px'
                         shadow='md'
-                        padding={4}
                         key={item.id}
+                        p={4}
                     >
-                        <CardSkeleton isLoaded>
-                            <CardHeader image={item.postImage} title={item.postTitle} />
+                        <CardSkeleton isLoaded={loading} >
+                            <CardHeader image={item.image} title={item.title} />
                         </CardSkeleton>
 
-                        <CardSkeleton isLoaded>
+                        <CardSkeleton isLoaded={loading} >
                             <CardBody
-                                body={item.postDescription}
-                                time={item.postCreatedAt}
-                                location={item.postLocation}
+                                body={item.description}
+                                time={item.createdAt}
+                                location={item.location}
                             />
                         </CardSkeleton>
 
                         <Divider />
 
-                        <CardSkeleton isLoaded>
+                        <CardSkeleton isLoaded={loading} >
                             <CardFooter post={item} />
                         </CardSkeleton>
                     </VStack>

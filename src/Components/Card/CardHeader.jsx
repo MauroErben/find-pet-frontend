@@ -4,17 +4,17 @@ import { VStack, Image, Heading } from '@chakra-ui/react'
 export default function CardHeader({ image, title }) {
     return (
         <VStack
-            w='full'
+            justifyContent='center'
             alignItems='flex-start'
         >
             <Image
-                w='full'
-                h={[200, 300, 150]}
+                width='full'
+                height={[200, 300, 150]}
                 src={image}
                 objectFit='cover'
                 alt='petAlt'
             />
-            <Heading as='h1' fontSize='lg'>{title}</Heading>
+            <Heading noOfLines={1} as='h1' fontSize='md'>{title}</Heading>
         </VStack>
     )
 }

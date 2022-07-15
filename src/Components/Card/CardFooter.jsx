@@ -58,7 +58,7 @@ export default function CardFooter({ post }) {
                         >
                             <FacebookShareButton
                                 url={`http://localhost:3000/${post?.id}`}
-                                quote={post?.postTitle}
+                                quote={post?.title}
                                 hashtag='#AnimalesMendoza'
                             >
                                 <FacebookIcon round size={48} />
@@ -66,14 +66,14 @@ export default function CardFooter({ post }) {
 
                             <WhatsappShareButton
                                 url={`http://localhost:3000/${post?.id}`}
-                                title={post?.postTitle}
+                                title={post?.title}
                             >
                                 <WhatsappIcon round size={48} />
                             </WhatsappShareButton>
 
                             <TwitterShareButton
                                 url={`http://localhost:3000/${post?.id}`}
-                                title={post?.postTitle}
+                                title={post?.title}
                                 hashtags={['AnimalesMendoza', 'AnimalesPerdidos', 'BusquedaDeAnimales', 'Mendoza']}
                             >
                                 <TwitterIcon round size={48} />

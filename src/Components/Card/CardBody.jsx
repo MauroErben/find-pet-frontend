@@ -7,11 +7,10 @@ import 'moment/dist/locale/es'
 export default function CardBody({ body, location, time }) {
     return (
         <VStack
-            spacing={2}
             alignItems='flex-start'
             fontSize='sm'
         >
-            <Text noOfLines={3}>{body}</Text>
+            <Text noOfLines={1}>{body}</Text>
             <HStack
                 spacing={1}
             >
