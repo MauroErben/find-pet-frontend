@@ -8,7 +8,7 @@ import CardSkeleton from '../Skeleton'
 export default function CardPost({ postData, loading }) {
     if (postData.length > 0) {
         return (
-            <SimpleGrid p={[4, 4, 6, 8]} columns={{ sm: 1, md: 2, lg: 3 }} spacing={14}>
+            <SimpleGrid p={[4, 4, 6, 8]} columns={{ sm: 1, md: 2, lg: 3 }} spacing={8}>
                 {postData.map(item => (
                     <VStack
                         justifyContent='center'
