@@ -4,10 +4,10 @@ import CardHeader from './CardHeader'
 import CardBody from './CardBody'
 import CardFooter from './CardFooter'
 
-export default function Card({ postList }) {
+export default function CardPost({ postList }) {
     if (postList.length > 0) {
         return (
-            <SimpleGrid p={[4, 4, 6, 8]} columns={{sm: 1, md: 2, lg: 3}} spacing={8}>
+            <SimpleGrid p={[4, 4, 6, 8]} columns={{sm: 1, md: 2, lg: 3}} spacing={14}>
                 {postList.map(item => (
                     <VStack
                         alignItems='flex-start'
@@ -23,7 +23,7 @@ export default function Card({ postList }) {
                             location={item.postLocation}
                         />
                         <Divider />
-                        <CardFooter itemToShare={item}/>
+                        <CardFooter />
                     </VStack>
                 ))}
             </SimpleGrid>

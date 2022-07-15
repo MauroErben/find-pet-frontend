@@ -6,7 +6,7 @@ export default function CardHeader({ image }) {
         <Box w='full'>
             <Image
                 w='full'
-                h={[200, 400, 200]}
+                h={[200, 300, 200]}
                 src={image}
                 objectFit='cover'
                 alt='petAlt'

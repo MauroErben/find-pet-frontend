@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Card from '../Card'
+import CardPost from '../Card'
 
 export default function Posts () {
     const [post, setPost] = useState([
@@ -31,6 +31,6 @@ export default function Posts () {
         }
     ])
     return(
-        <Card postList={post} />
+        <CardPost postList={post} />
     )
 }
