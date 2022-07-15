@@ -1,6 +1,6 @@
 import React from 'react'
 import CardPost from '../Card'
-import usePost from '../Hooks/post'
+import usePost from '../../Hooks/post'
 
 export default function Posts () {
     // Get all post
