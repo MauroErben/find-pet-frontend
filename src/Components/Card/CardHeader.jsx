@@ -1,9 +1,12 @@
 import React from 'react'
-import { Box, Image } from '@chakra-ui/react'
+import { VStack, Image, Heading } from '@chakra-ui/react'
 
-export default function CardHeader({ image }) {
+export default function CardHeader({ image, title }) {
     return (
-        <Box w='full'>
+        <VStack
+            w='full'
+            alignItems='flex-start'
+        >
             <Image
                 w='full'
                 h={[200, 300, 150]}
@@ -11,6 +14,7 @@ export default function CardHeader({ image }) {
                 objectFit='cover'
                 alt='petAlt'
             />
-        </Box>
+            <Heading as='h1' fontSize='lg'>{title}</Heading>
+        </VStack>
     )
 }

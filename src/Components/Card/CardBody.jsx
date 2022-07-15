@@ -1,18 +1,17 @@
 import React from 'react'
-import { VStack, HStack, Heading, Text } from '@chakra-ui/react'
+import { VStack, HStack, Text } from '@chakra-ui/react'
 import { MdLocationPin, MdAccessTime } from 'react-icons/md'
 import moment from 'moment/dist/moment'
 import 'moment/dist/locale/es'
 
-export default function CardBody({ title, desc, location, time }) {
+export default function CardBody({ body, location, time }) {
     return (
         <VStack
             spacing={2}
             alignItems='flex-start'
             fontSize='sm'
         >
-            <Heading fontSize='lg'>{title}</Heading>
-            <Text noOfLines={3}>{desc}</Text>
+            <Text noOfLines={3}>{body}</Text>
             <HStack
                 spacing={1}
             >

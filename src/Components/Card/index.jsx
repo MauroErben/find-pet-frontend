@@ -16,10 +16,9 @@ export default function CardPost({ postList }) {
                         padding={4}
                         key={item.id}
                     >
-                        <CardHeader image={item.postImage} />
+                        <CardHeader image={item.postImage} title={item.postTitle} />
                         <CardBody
-                            title={item.postTitle}
-                            desc={item.postDescription}
+                            body={item.postDescription}
                             time={item.postCreatedAt}
                             location={item.postLocation}
                         />

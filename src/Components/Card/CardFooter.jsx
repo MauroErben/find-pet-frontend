@@ -41,7 +41,7 @@ export default function CardFooter({ post }) {
 
                 <IconButton
                     variant='link'
-                    icon={<MdShare size={24} />}
+                    icon={<MdShare size={22} />}
                     onClick={onOpen}
                 />
             </HStack>
