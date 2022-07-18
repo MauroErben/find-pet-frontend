@@ -44,6 +44,8 @@ export default function PostForm() {
 
     return (
         <Stack
+            justifyContent='center'
+            alignItems='center'
             spacing={4}
             padding={[4, 4, 6, 8]}
         >
@@ -56,6 +58,7 @@ export default function PostForm() {
             {/* BODY */}
             <VStack
                 spacing={4}
+                w={[300, 400, 600]}
             >
                 <FormControl isInvalid={formik.touched.title && formik.errors.title}>
                     <InputGroup>
@@ -133,12 +136,11 @@ export default function PostForm() {
                             onBlur={formik.handleBlur}
                         />
                     </InputGroup>
-                    <FormHelperText>Ingresá un numero sin el código de área ej: 261XXXXXXX</FormHelperText>
+                    <FormHelperText>Ingresá un numero sin el código de país ej: 261XXXXXXX</FormHelperText>
                     <FormErrorMessage>{formik.errors.phone}</FormErrorMessage>
                 </FormControl>
 
                 <Button
-                    size='lg'
                     colorScheme='green'
                     disabled={formik.isSubmitting}
                     onClick={formik.handleSubmit}

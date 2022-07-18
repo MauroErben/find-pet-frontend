@@ -33,6 +33,8 @@ export default function LoginForm() {
 
     return (
         <Stack
+            justifyContent='center'
+            alignItems='center'
             spacing={4}
             padding={[4, 4, 6, 8]}
         >
@@ -44,6 +46,7 @@ export default function LoginForm() {
             {/* BODY */}
             <VStack
                 spacing={4}
+                w={[300, 400, 600]}
             >
                 <FormControl isInvalid={formik.touched.email && formik.errors.email}>
                     <Input
@@ -70,7 +73,6 @@ export default function LoginForm() {
                 </FormControl>
 
                 <Button
-                    size='lg'
                     colorScheme='green'
                     disabled={formik.isSubmitting}
                     onClick={formik.handleSubmit}

@@ -11,7 +11,7 @@ export default function FormHeader ({ title, subtitle }) {
             <Text textAlign='center'>
                 {subtitle}
             </Text>
-            <Image boxSize='120px' src='/images/huella.png'/>
+            <Image boxSize='80px' src='/images/huella.png'/>
         </VStack>
     )
 }

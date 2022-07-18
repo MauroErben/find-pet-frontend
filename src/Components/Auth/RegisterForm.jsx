@@ -28,6 +28,8 @@ export default function RegisterForm() {
 
     return (
         <Stack
+            justifyContent='center'
+            alignItems='center'
             spacing={4}
             padding={[4, 4, 6, 8]}
         >
@@ -39,6 +41,7 @@ export default function RegisterForm() {
             {/* BODY */}
             <VStack
                 spacing={4}
+                w={[300, 400, 600]}
             >
                 <FormControl isInvalid={formik.touched.name && formik.errors.name}>
                     <Input
@@ -103,7 +106,6 @@ export default function RegisterForm() {
                 </FormControl>
 
                 <Button
-                    size='lg'
                     colorScheme='green'
                     onClick={formik.handleSubmit}
                 >
