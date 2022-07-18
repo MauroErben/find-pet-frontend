@@ -7,14 +7,14 @@ import CardSkeleton from '../Skeleton'
 
 export default function CardPost({ postData, loading }) {
     return (
-        <SimpleGrid p={[4, 4, 6, 8]} columns={{ sm: 1, md: 2, lg: 3 }} spacing={8}>
-            {postData.map(item => (
+        <SimpleGrid p={[4, 4, 6, 8]} columns={{ sm: 1, md: 2, lg: 3, xl: 4 }} spacing={8}>
+            {postData.map((item, index) => (
                 <VStack
+                    key={index}
                     justifyContent='center'
                     alignItems='center'
                     borderWidth='1px'
                     shadow='md'
-                    key={item.id}
                     p={4}
                 >
                     <CardSkeleton isLoaded={loading} >
