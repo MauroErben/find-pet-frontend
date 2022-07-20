@@ -4,6 +4,7 @@ import { VStack, Image, Heading } from '@chakra-ui/react'
 export default function CardHeader({ image, title }) {
     return (
         <VStack
+            w='full'
             justifyContent='center'
             alignItems='flex-start'
         >
