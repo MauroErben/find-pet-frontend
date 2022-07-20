@@ -21,9 +21,16 @@ import {
     TwitterShareButton,
     TwitterIcon
 } from 'react-share'
+import { useNavigate } from 'react-router-dom'
 
 export default function CardFooter({ post }) {
     const { isOpen, onOpen, onClose } = useDisclosure()
+    const navigate = useNavigate()
+
+    const handleDetail = id => {
+        navigate(`post/${id}`)
+    }
+
     return (
         <>
             <HStack
@@ -33,6 +40,7 @@ export default function CardFooter({ post }) {
                 <Button
                     variant='link'
                     colorScheme='purple'
+                    onClick={() => handleDetail(post?.id)}
                 >
                     Ver publicación
                 </Button>
