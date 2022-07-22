@@ -2,9 +2,6 @@ import React from 'react'
 import {
     Stack,
     VStack,
-    Heading,
-    Text,
-    Image,
     InputGroup,
     Input,
     Textarea,
@@ -20,6 +17,7 @@ import FormHeader from '../FormHeader'
 import { MdTitle, MdImage } from 'react-icons/md'
 import { useFormik } from 'formik'
 import { postScheme } from './PostScheme'
+import { createPost } from '../../Services/Api'
 
 export default function PostForm() {
 
@@ -33,12 +31,19 @@ export default function PostForm() {
             phone: '',
         },
         validationSchema: postScheme,
-        onSubmit: (values, { setSubmitting, resetForm }) => {
-            setTimeout(() => {
-                alert(JSON.stringify(values))
+        onSubmit: async (values, { setSubmitting, resetForm }) => {
+            const formData = new FormData()
+            formData.append('title', values.title)
+            formData.append('description', values.description)
+            formData.append('location', values.location)
+            formData.append('image', values.image)
+            formData.append('phone', values.phone)
+            const post = await createPost(formData)
+            if (post.status === 201) {
                 setSubmitting(false)
                 resetForm()
-            }, 400);
+                console.log(post.data)
+            }
         }
     })
 
@@ -54,7 +59,7 @@ export default function PostForm() {
                 title='Crear publicación'
                 subtitle='Creá una publicación y aumentá las probabilidades de encontrar a tu mascota.'
             />
-            
+
             {/* BODY */}
             <VStack
                 spacing={4}
@@ -111,10 +116,8 @@ export default function PostForm() {
                             type='file'
                             accept='.png,.jpg,.jpeg'
                             name='image'
-                            onChange={(e) => {
-                                const files = e.target.files
-                                const myFiles = Array.from(files)
-                                formik.setFieldValue('image', myFiles[0])
+                            onChange={e => {
+                                formik.setFieldValue('image', e.target.files[0])
                             }}
                             onBlur={formik.handleBlur}
                         />

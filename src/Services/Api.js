@@ -15,3 +15,9 @@ export const getPostById = id => {
         .then(res => res.data)
         .catch(error => console.log(error))
 }
+ 
+export const createPost = payload => {
+    return axiosInstance.post('posts', payload)
+        .then(res => res)
+        .catch(error => console.log(error))
+}
