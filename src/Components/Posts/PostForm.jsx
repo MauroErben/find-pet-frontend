@@ -37,7 +37,7 @@ export default function PostForm() {
             formData.append('description', values.description)
             formData.append('location', values.location)
             formData.append('image', values.image)
-            formData.append('phone', values.phone)
+            formData.append('phone_contact', values.phone)
             const post = await createPost(formData)
             if (post.status === 201) {
                 setSubmitting(false)
