@@ -4,25 +4,30 @@ import FormHeader from '../FormHeader'
 import { useFormik } from 'formik'
 import { RegisterSchema } from './Schemas/RegisterSchema'
 import { Link as RouterLink } from 'react-router-dom'
+import { register } from '../../Services/userApi'
+import { useNavigate } from 'react-router-dom'
 
 export default function RegisterForm() {
+    const navigate = useNavigate();
 
     const formik = useFormik({
         enableReinitialize: true,
         initialValues: {
-            name: '',
+            fullname: '',
             email: '',
-            profilePicture: '',
+            image: '',
             password: '',
-            repeatPassword: ''
         },
         validationSchema: RegisterSchema,
-        onSubmit: (values, { setSubmitting, resetForm }) => {
-            setTimeout(() => {
-                alert(JSON.stringify(values))
+        onSubmit: async (values, { setSubmitting, resetForm }) => {
+            const response = await register(values)
+            if (response) {
+                alert(response?.message);
+                localStorage.setItem('FIND_PET_ACCESS', response.token)
                 setSubmitting(false)
                 resetForm()
-            }, 400);
+                navigate('/', { replace: true })
+            }
         }
     })
 
@@ -45,7 +50,7 @@ export default function RegisterForm() {
             >
                 <FormControl isInvalid={formik.touched.name && formik.errors.name}>
                     <Input
-                        name='name'
+                        name='fullname'
                         type='text'
                         placeholder='Nombre completo'
                         value={formik.values.name}
@@ -69,13 +74,10 @@ export default function RegisterForm() {
 
                 <FormControl isInvalid={formik.touched.profilePicture && formik.errors.profilePicture}>
                     <Input
-                        name='profilePicture'
+                        name='image'
                         type='file'
-                        onChange={(e) => {
-                            const files = e.target.files
-                            const myFiles = Array.from(files)
-                            formik.setFieldValue('profilePicture', myFiles[0])
-                        }}
+                        value={formik.values.image}
+                        onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
                     />
                     <FormErrorMessage>{formik.errors.profilePicture}</FormErrorMessage>
@@ -91,18 +93,6 @@ export default function RegisterForm() {
                         onBlur={formik.handleBlur}
                     />
                     <FormErrorMessage>{formik.errors.password}</FormErrorMessage>
-                </FormControl>
-
-                <FormControl isInvalid={formik.touched.repeatPassword && formik.errors.repeatPassword}>
-                    <Input
-                        name='repeatPassword'
-                        type='password'
-                        placeholder='Repetir contraseña'
-                        value={formik.values.repeatPassword}
-                        onChange={formik.handleChange}
-                        onBlur={formik.handleBlur}
-                    />
-                    <FormErrorMessage>{formik.errors.repeatPassword}</FormErrorMessage>
                 </FormControl>
 
                 <Button

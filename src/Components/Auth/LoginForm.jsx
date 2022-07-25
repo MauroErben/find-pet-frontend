@@ -13,21 +13,31 @@ import {
 import { Link as RouterLink } from 'react-router-dom'
 import { useFormik } from 'formik'
 import { LoginSchema } from './Schemas/LoginSchema'
+import { useNavigate } from 'react-router-dom'
+import { login } from '../../Services/userApi'
 
 export default function LoginForm() {
+
+    const navigate = useNavigate()
     const formik = useFormik({
+
         enableReinitialize: true,
+
         initialValues: {
             email: '',
             password: ''
         },
+
         validationSchema: LoginSchema,
-        onSubmit: (values, { setSubmitting, resetForm }) => {
-            setTimeout(() => {
-                alert(JSON.stringify(values))
+
+        onSubmit: async (values, { setSubmitting, resetForm }) => {
+            const response = await login(values)
+            if (response) {
+                localStorage.setItem('FIND_PET_ACCESS', response.token)
                 setSubmitting(false)
                 resetForm()
-            }, 400);
+                navigate('/', { replace: true }) // replace es para borrar el historial de navigación y no poder volver atrás
+            }
         }
     })
 
@@ -91,7 +101,6 @@ export default function LoginForm() {
                     </Link>
                 </Text>
             </VStack>
-
         </Stack>
     )
 }
